@@ -19,7 +19,7 @@ router.get('/:id', async (req, res, next) => {
 
   pool.getConnection(function (err, conn) {
     const query=`
-    select * from productos a 
+    select a.producto,a.foto,a.descripcion as descProd,c.precio,d.proveedor,d.descripcion from productos a 
     inner join productosPrecios b on b.idProducto=a.idProducto 
     inner join preciosProveedor c on b.idPrecioProveedor = c.idPrecioProveedor
     inner join proveedores d on c.idProveedor = d.idProveedor
